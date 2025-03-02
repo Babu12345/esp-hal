@@ -1,71 +1,101 @@
 [package]
-name          = "esp-hal"
-version       = "0.21.1"
-edition       = "2021"
-rust-version  = "1.79.0"
-description   = "Bare-metal HAL for Espressif devices"
+name = "esp-hal"
+version = "0.21.1"
+edition = "2021"
+rust-version = "1.79.0"
+description = "Bare-metal HAL for Espressif devices"
 documentation = "https://docs.esp-rs.org/esp-hal/"
-repository    = "https://github.com/esp-rs/esp-hal"
-license       = "MIT OR Apache-2.0"
-links         = "esp-hal"
+repository = "https://github.com/esp-rs/esp-hal"
+license = "MIT OR Apache-2.0"
+links = "esp-hal"
 
 [package.metadata.docs.rs]
 default-target = "riscv32imac-unknown-none-elf"
-features       = ["esp32c6"]
-rustdoc-args   = ["--cfg", "docsrs"]
+features = ["esp32c6"]
+rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
-bitflags                 = "2.6.0"
-bytemuck                 = "1.18.0"
-bitfield                 = "0.16.1"
-cfg-if                   = "1.0.0"
-chrono                   = { version = "0.4.38", default-features = false }
-critical-section         = "1.1.3"
-defmt                    = { version = "0.3.8", optional = true }
-delegate                 = "0.12.0"
-digest                   = { version = "0.10.7", default-features = false, optional = true }
-document-features        = "0.2.10"
+bitflags = "2.6.0"
+bytemuck = "1.18.0"
+bitfield = "0.16.1"
+cfg-if = "1.0.0"
+chrono = { version = "0.4.38", default-features = false }
+critical-section = "1.1.3"
+defmt = { version = "0.3.8", optional = true }
+delegate = "0.12.0"
+digest = { version = "0.10.7", default-features = false, optional = true }
+document-features = "0.2.10"
 # embassy-futures          = "0.1.1"
 # embassy-sync             = "0.6.0"
 # embassy-usb-driver       = { version = "0.1.0", optional = true }
 # embassy-usb-synopsys-otg = { version = "0.1.0", optional = true }
-embassy-sync = { git = "https://github.com/i404788/embassy.git", branch = "usb-asynch"}
-embassy-futures = { git = "https://github.com/i404788/embassy.git", branch = "usb-asynch"}
-embassy-usb-driver = { git = "https://github.com/i404788/embassy.git", branch = "usb-asynch", optional = true}
-embassy-usb-synopsys-otg = { git = "https://github.com/i404788/embassy.git", branch = "usb-asynch", optional = true}
-embedded-can             = "0.4.1"
-embedded-hal-02          = { version = "0.2.7", features = ["unproven"], package = "embedded-hal" }
-embedded-hal             = "1.0.0"
-embedded-hal-async       = "1.0.0"
-embedded-hal-nb          = "1.0.0"
-embedded-io              = "0.6.1"
-embedded-io-async        = "0.6.1"
-enumset                  = "1.1.5"
-esp-synopsys-usb-otg     = { version = "0.4.2", optional = true, features = ["fs", "esp32sx"] }
-fugit                    = "0.3.7"
-log                      = { version = "0.4.22", optional = true }
-nb                       = "1.1.0"
-paste                    = "1.0.15"
-portable-atomic          = { version = "1.9.0", default-features = false }
-procmacros               = { version = "0.14.0", features = ["enum-dispatch", "interrupt", "ram"], package = "esp-hal-procmacros", path = "../esp-hal-procmacros" }
-riscv                    = { version = "0.11.1", optional = true }
-strum                    = { version = "0.26.3", default-features = false, features = ["derive"] }
-void                     = { version = "1.0.2", default-features = false }
-usb-device               = { version = "0.3.2", optional = true }
-rand_core                = "0.6.4"
-ufmt-write               = "0.1.0"
-xtensa-lx                = { version = "0.9.0", optional = true }
+embassy-sync = { git = "https://github.com/Babu12345/embassy", branch = "usb-asynch" }
+embassy-futures = { git = "https://github.com/Babu12345/embassy", branch = "usb-asynch" }
+embassy-usb-driver = { git = "https://github.com/Babu12345/embassy", branch = "usb-asynch", optional = true }
+embassy-usb-synopsys-otg = { git = "https://github.com/Babu12345/embassy", branch = "usb-asynch", optional = true }
+embedded-can = "0.4.1"
+embedded-hal-02 = { version = "0.2.7", features = [
+    "unproven",
+], package = "embedded-hal" }
+embedded-hal = "1.0.0"
+embedded-hal-async = "1.0.0"
+embedded-hal-nb = "1.0.0"
+embedded-io = "0.6.1"
+embedded-io-async = "0.6.1"
+enumset = "1.1.5"
+esp-synopsys-usb-otg = { version = "0.4.2", optional = true, features = [
+    "fs",
+    "esp32sx",
+] }
+fugit = "0.3.7"
+log = { version = "0.4.22", optional = true }
+nb = "1.1.0"
+paste = "1.0.15"
+portable-atomic = { version = "1.9.0", default-features = false }
+procmacros = { version = "0.14.0", features = [
+    "enum-dispatch",
+    "interrupt",
+    "ram",
+], package = "esp-hal-procmacros", path = "../esp-hal-procmacros" }
+riscv = { version = "0.11.1", optional = true }
+strum = { version = "0.26.3", default-features = false, features = ["derive"] }
+void = { version = "1.0.2", default-features = false }
+usb-device = { version = "0.3.2", optional = true }
+rand_core = "0.6.4"
+ufmt-write = "0.1.0"
+xtensa-lx = { version = "0.9.0", optional = true }
 
 # IMPORTANT:
 # Each supported device MUST have its PAC included below along with a
 # corresponding feature.
-esp32   = { version = "0.33.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = ["critical-section", "rt"], optional = true }
-esp32c2 = { version = "0.22.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = ["critical-section", "rt"], optional = true }
-esp32c3 = { version = "0.25.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = ["critical-section", "rt"], optional = true }
-esp32c6 = { version = "0.16.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = ["critical-section", "rt"], optional = true }
-esp32h2 = { version = "0.12.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = ["critical-section", "rt"], optional = true }
-esp32s2 = { version = "0.24.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = ["critical-section", "rt"], optional = true }
-esp32s3 = { version = "0.28.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = ["critical-section", "rt"], optional = true }
+esp32 = { version = "0.33.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = [
+    "critical-section",
+    "rt",
+], optional = true }
+esp32c2 = { version = "0.22.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = [
+    "critical-section",
+    "rt",
+], optional = true }
+esp32c3 = { version = "0.25.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = [
+    "critical-section",
+    "rt",
+], optional = true }
+esp32c6 = { version = "0.16.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = [
+    "critical-section",
+    "rt",
+], optional = true }
+esp32h2 = { version = "0.12.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = [
+    "critical-section",
+    "rt",
+], optional = true }
+esp32s2 = { version = "0.24.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = [
+    "critical-section",
+    "rt",
+], optional = true }
+esp32s3 = { version = "0.28.0", git = "https://github.com/esp-rs/esp-pacs.git", rev = "48fd400", features = [
+    "critical-section",
+    "rt",
+], optional = true }
 
 [target.'cfg(target_arch = "riscv32")'.dependencies]
 esp-riscv-rt = { version = "0.9.0", path = "../esp-riscv-rt" }
@@ -74,23 +104,32 @@ esp-riscv-rt = { version = "0.9.0", path = "../esp-riscv-rt" }
 xtensa-lx-rt = { version = "0.17.0", path = "../xtensa-lx-rt" }
 
 [build-dependencies]
-basic-toml   = "0.1.9"
-cfg-if       = "1.0.0"
-esp-build    = { version = "0.1.0", path = "../esp-build" }
+basic-toml = "0.1.9"
+cfg-if = "1.0.0"
+esp-build = { version = "0.1.0", path = "../esp-build" }
 esp-metadata = { version = "0.4.0", path = "../esp-metadata" }
-esp-config   = { version = "0.1.0", path = "../esp-config", features = ["build"] }
-serde        = { version = "1.0.210", features = ["derive"] }
+esp-config = { version = "0.1.0", path = "../esp-config", features = ["build"] }
+serde = { version = "1.0.210", features = ["derive"] }
 
 [features]
 default = []
 
-riscv  = ["dep:riscv",     "critical-section/restore-state-u8"]
+riscv = ["dep:riscv", "critical-section/restore-state-u8"]
 xtensa = ["dep:xtensa-lx", "critical-section/restore-state-u32"]
 
 bluetooth = []
 
-usb-otg = ["dep:embassy-usb-driver", "dep:embassy-usb-synopsys-otg", "dep:esp-synopsys-usb-otg", "dep:usb-device"]
-usb-host = ["dep:embassy-usb-driver", "dep:embassy-usb-synopsys-otg", "embassy-usb-synopsys-otg/usbhost"]
+usb-otg = [
+    "dep:embassy-usb-driver",
+    "dep:embassy-usb-synopsys-otg",
+    "dep:esp-synopsys-usb-otg",
+    "dep:usb-device",
+]
+usb-host = [
+    "dep:embassy-usb-driver",
+    "dep:embassy-usb-synopsys-otg",
+    "embassy-usb-synopsys-otg/usbhost",
+]
 
 __esp_hal_embassy = []
 
@@ -109,19 +148,43 @@ log = ["dep:log"]
 
 # Chip Support Feature Flags
 # Target the ESP32.
-esp32   = ["dep:esp32",   "xtensa", "xtensa-lx/spin", "xtensa-lx-rt/esp32"]
+esp32 = ["dep:esp32", "xtensa", "xtensa-lx/spin", "xtensa-lx-rt/esp32"]
 # Target the ESP32-C2.
-esp32c2 = ["dep:esp32c2", "riscv",  "portable-atomic/unsafe-assume-single-core"]
+esp32c2 = ["dep:esp32c2", "riscv", "portable-atomic/unsafe-assume-single-core"]
 # Target the ESP32-C3.
-esp32c3 = ["dep:esp32c3", "riscv",  "portable-atomic/unsafe-assume-single-core", "esp-riscv-rt/rtc-ram"]
+esp32c3 = [
+    "dep:esp32c3",
+    "riscv",
+    "portable-atomic/unsafe-assume-single-core",
+    "esp-riscv-rt/rtc-ram",
+]
 # Target the ESP32-C6.
-esp32c6 = ["dep:esp32c6", "riscv",  "procmacros/has-lp-core", "esp-riscv-rt/rtc-ram"]
+esp32c6 = [
+    "dep:esp32c6",
+    "riscv",
+    "procmacros/has-lp-core",
+    "esp-riscv-rt/rtc-ram",
+]
 # Target the ESP32-H2.
 esp32h2 = ["dep:esp32h2", "riscv", "esp-riscv-rt/rtc-ram"]
 # Target the ESP32-S2.
-esp32s2 = ["dep:esp32s2", "xtensa", "portable-atomic/critical-section", "procmacros/has-ulp-core", "xtensa-lx-rt/esp32s2", "usb-otg"]
+esp32s2 = [
+    "dep:esp32s2",
+    "xtensa",
+    "portable-atomic/critical-section",
+    "procmacros/has-ulp-core",
+    "xtensa-lx-rt/esp32s2",
+    "usb-otg",
+]
 # Target the ESP32-S3.
-esp32s3 = ["dep:esp32s3", "xtensa", "procmacros/has-ulp-core", "xtensa-lx/spin", "xtensa-lx-rt/esp32s3", "usb-otg"]
+esp32s3 = [
+    "dep:esp32s3",
+    "xtensa",
+    "procmacros/has-ulp-core",
+    "xtensa-lx/spin",
+    "xtensa-lx-rt/esp32s3",
+    "usb-otg",
+]
 
 #! ### RISC-V Exclusive Feature Flags
 ## Move the stack to start of RAM to get zero-cost stack overflow protection
@@ -163,4 +226,6 @@ ci = ["defmt", "bluetooth"]
 mixed_attributes_style = "allow"
 
 [lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(host_os, values("windows"))'] }
+unexpected_cfgs = { level = "warn", check-cfg = [
+    'cfg(host_os, values("windows"))',
+] }
