@@ -127,6 +127,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             ("ap_beacon_timeout", Value::UnsignedInteger(300), "For SoftAP, If the SoftAP doesn’t receive any data from the connected STA during inactive time, the SoftAP will force deauth the STA. Default is 300s"),
             ("failure_retry_cnt", Value::UnsignedInteger(1), "Number of connection retries station will do before moving to next AP. scan_method should be set as WIFI_ALL_CHANNEL_SCAN to use this config. Note: Enabling this may cause connection time to increase incase best AP doesn't behave properly. Defaults to 1"),
             ("scan_method", Value::UnsignedInteger(0), "0 = WIFI_FAST_SCAN, 1 = WIFI_ALL_CHANNEL_SCAN, defaults to 0"),
+            ("max_tx_power", Value::UnsignedInteger(20), "Max WiFi TX power in dBm. Range 8-20. Lower values reduce power consumption but also reduce range. See [ESP-IDF Programming Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_wifi.html)"),
         ],
         true
     );
