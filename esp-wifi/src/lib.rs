@@ -219,6 +219,7 @@ pub(crate) const CONFIG: config::EspWifiConfig = config::EspWifiConfig {
     ap_beacon_timeout: esp_config_int!(u16, "ESP_WIFI_CONFIG_AP_BEACON_TIMEOUT"),
     failure_retry_cnt: esp_config_int!(u8, "ESP_WIFI_CONFIG_FAILURE_RETRY_CNT"),
     scan_method: esp_config_int!(u32, "ESP_WIFI_CONFIG_SCAN_METHOD"),
+    max_tx_power: esp_config_int!(u8, "ESP_WIFI_CONFIG_MAX_TX_POWER"),
 };
 
 // Validate the configuration at compile time

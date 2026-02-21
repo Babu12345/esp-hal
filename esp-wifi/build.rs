@@ -221,6 +221,12 @@ fn main() -> Result<(), Box<dyn Error>> {
                 Value::Bool(true),
                 None
             ),
+            (
+                "max_tx_power",
+                "Max WiFi TX power in dBm (range 8-20). Lower values reduce power consumption but also reduce range.",
+                Value::Integer(20),
+                None
+            ),
         ],
         true
     );

@@ -1633,7 +1633,7 @@ pub(crate) fn wifi_start() -> Result<(), WifiError> {
             cc: core::mem::transmute::<[u8; 3], [core::ffi::c_char; 3]>(cntry_code),
             schan: 1,
             nchan: 13,
-            max_tx_power: 20,
+            max_tx_power: crate::CONFIG.max_tx_power as i8,
             policy: wifi_country_policy_t_WIFI_COUNTRY_POLICY_MANUAL,
         };
         esp_wifi_result!(esp_wifi_set_country(&country))?;

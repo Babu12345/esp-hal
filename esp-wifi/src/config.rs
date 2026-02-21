@@ -23,6 +23,7 @@ pub(crate) struct EspWifiConfig {
     pub(crate) ap_beacon_timeout: u16,
     pub(crate) failure_retry_cnt: u8,
     pub(crate) scan_method: u32,
+    pub(crate) max_tx_power: u8,
 }
 
 #[cfg(not(coex))]
